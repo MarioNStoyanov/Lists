@@ -1,0 +1,36 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace _01.Ttrain
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> wagons = Console.ReadLine()
+                .Split()
+                .Select(int.Parse)
+                .ToList();
+            string command = Console.ReadLine();
+            while (command != "end")
+            {
+                string[] tokens = command.Split();
+                if (tokens[0] == "Delete")
+                {
+                    int num = int.Parse(tokens[1]);
+                    wagons.RemoveAll(el => el == num);
+                }
+                else if (tokens[0] == "Insert")
+                {
+                    int num = int.Parse(tokens[1]);
+                    int index = int.Parse(tokens[2]);
+                    wagons.Insert(index, num);
+                }
+                command = Console.ReadLine();
+            }
+            Console.WriteLine(string.Join(" ",wagons));
+        }
+    }
+}
+
