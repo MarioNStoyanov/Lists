@@ -1,0 +1,48 @@
+using System;
+using System.Collections.Generic;
+
+namespace ConsoleApp36
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int count = int.Parse(Console.ReadLine());
+            List<string> partyList = new List<string>();
+
+            for (int i = 1; i <= count; i++)
+            {
+                string[] command = Console.ReadLine().Split();
+
+                string currName = command[0];
+
+                if (partyList.Contains(currName) && command[2] == "going!")
+                {
+                    Console.WriteLine($"{currName} is already in the list!");
+
+
+                }
+
+                else if (partyList.Contains(currName) && command[2] == "not")
+                {
+                    partyList.Remove(currName);
+                }
+                else if (!partyList.Contains(currName) && command[2] == "not")
+                {
+                    Console.WriteLine($"{currName} is not in the list!");
+                }
+                else
+                {
+                    partyList.Add(currName);
+                }
+
+
+            }
+
+            foreach (var currName in partyList)
+            {
+                Console.WriteLine(currName);
+            }
+        }
+    }
+}
